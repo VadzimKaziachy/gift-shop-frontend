@@ -1,0 +1,43 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule} from "@angular/common/http";
+import { ApolloModule, Apollo} from "apollo-angular";
+import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
+import {RouterModule, Routes} from '@angular/router';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import {InMemoryCache} from "apollo-cache-inmemory";
+import { BlogPageComponent } from './blog-page/blog-page.component';
+import { BlogInnerPageComponent } from './blog-inner-page/blog-inner-page.component';
+
+const appRouts: Routes = [
+  {path:'', component: BlogPageComponent}
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    BlogPageComponent,
+    BlogInnerPageComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule,
+    RouterModule.forRoot(appRouts)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+
+  constructor ( apollo: Apollo, httpLink: HttpLink ) {
+    apollo.create({
+      link: httpLink.create({uri: 'http://localhost:8000/graphql'}),
+      cache: new InMemoryCache()
+    });
+  }
+}
