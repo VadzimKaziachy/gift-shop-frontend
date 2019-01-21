@@ -1,9 +1,18 @@
-<div *ngFor="let gift of gifts | async">
-  <div class="card" style="width: 100%; margin-top: 10px">
-    <div class="card-body">
-      <h5 class="card-title">{{gift.title}}</h5>
+<section class="content">
+
+  <div class="gifts">
+    <div class="gift" *ngFor="let gift of gifts | async">
+      <a class="gift__image" [routerLink]="['gift', gift.id]">
+        <img src="../../assets/peach/512%20(2).png" alt="">
+      </a>
+      <div class="gift__info">
+        <a class="gift__info__title" [routerLink]="['gift',gift.id]">{{gift.title}}</a>
+        <p class="gift__info__description">{{gift.shortDescription}}</p>
+        <button class="gift__info__btn" (click)="buy()">Buy</button>
+      </div>
     </div>
   </div>
-</div>
+
+</section>
 
 

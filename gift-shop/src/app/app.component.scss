@@ -1,0 +1,146 @@
+header, footer {
+  background: #fff;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  h6 {
+    width: 20%;
+    text-align: center;
+  }
+}
+
+span {
+  display: block;
+  background-color: black;
+  width: 100%;
+  height: 1px;
+}
+
+.shopping__card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(189, 188, 185, 0.7);
+
+  .form {
+    padding: 0;
+    margin: 0;
+    width: 40%;
+    height: 30%;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+    min-width: 200px;
+
+    .shut__down {
+      align-self: flex-end;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 1px 1px 10px rgba(0,0,0,.4);
+      position: relative;
+      top: 10px;
+      right: 10px;
+      z-index:3;
+      span, span:before {
+        display: block;
+        height: 2px;
+        width: 18px;
+        position: absolute;
+        left: 50%;
+        margin-left: -9px;
+        top: 50%;
+        margin-top: -1px;
+        background-color: #333;
+        transform: rotate(135deg);
+      }
+      span:before {
+        content: '';
+        transform: rotate(90deg);
+      }
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      list-style: none;
+      width: 100%;
+      height: auto;
+      padding: 10px 10px 10px 10px;
+
+      li {
+        display: inline-flex;
+        justify-content: space-between;
+        padding: 2% 10% 0 10%;
+
+
+        .from__label {
+          font-size: 10px;
+          color: black;
+        }
+
+        .form__input {
+          background-color: white;
+          border: 1px rgba(189, 188, 185, 0.7) inset;
+          width: 50%;
+          height: 20px;
+          padding-left: 1%
+        }
+
+        .form__btn {
+          background-color: #64b1f5;
+          border: 0;
+          border-radius: 5px;
+          width: 50px;
+          height: 25px;
+          box-shadow: 2px 2px 0 0 rgba(164, 207, 245, 0.6);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .shopping__card .form {
+    width: 100%;
+    height: 35%;
+
+    .form__label {
+      font-size: 20px;
+      padding-top: 6px;
+    }
+
+    .form__input {
+      height: 40px!important;
+    }
+    .form__btn {
+      padding-top: 6px;
+      font-size: 20px;
+      width: 100%!important;
+      height: 40px!important;
+    }
+  }
+}
