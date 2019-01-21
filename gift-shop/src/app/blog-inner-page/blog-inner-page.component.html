@@ -1,3 +1,15 @@
-<p>
-  blog-inner-page works!
-</p>
+<section class="content">
+
+  <div class="gift" *ngIf="gift | async as gift">
+    <div class="gift__image">
+      <img src="../../assets/peach/512%20(2).png" alt="">
+      <button class="btn" (click)="buy()">Buy</button>
+    </div>
+    <div class="gift__content">
+      <h3 class="gift__content__title">{{gift.title}}</h3>
+      <p class="gift__content__text">{{gift.fullDescription}}</p>
+    </div>
+  </div>
+
+</section>
+

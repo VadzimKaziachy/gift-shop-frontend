@@ -10,9 +10,11 @@ import { AppComponent } from './app.component';
 import {InMemoryCache} from "apollo-cache-inmemory";
 import { BlogPageComponent } from './blog-page/blog-page.component';
 import { BlogInnerPageComponent } from './blog-inner-page/blog-inner-page.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const appRouts: Routes = [
-  {path:'', component: BlogPageComponent}
+  {path:'', component: BlogPageComponent},
+  {path:'gift/:id', component: BlogInnerPageComponent}
 ];
 
 @NgModule({
@@ -27,7 +29,9 @@ const appRouts: Routes = [
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
-    RouterModule.forRoot(appRouts)
+    RouterModule.forRoot(appRouts),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

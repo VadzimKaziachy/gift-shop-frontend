@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, pluck, shareReplay} from 'rxjs/operators';
 import gql from 'graphql-tag';
 
 import { Gift, Query } from '../models/model-db'
@@ -11,12 +10,12 @@ import { Gift, Query } from '../models/model-db'
   providedIn: 'root'
 })
 export class GraphqlService implements OnInit{
-  private gifts: Observable<Gift[]>;
+
   constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {}
   getGifts() {
-    this.gifts = this.apollo.watchQuery<Query>({
+    return this.apollo.watchQuery<Query>({
       query: gql`
         query  {
             allGifts   {
@@ -31,6 +30,25 @@ export class GraphqlService implements OnInit{
       .pipe(
         map(result => result.data.allGifts)
       );
-    return this.gifts
+  }
+
+  getGift(gift_id:number){
+    return this.apollo.watchQuery<Gift>({
+      query: gql`
+        query function($id: Int!) {
+            gift (id: $id) {
+                id
+                title
+                shortDescription
+                fullDescription
+              }
+          } 
+          `,
+      variables: {
+          id: gift_id
+      }
+    })
+      .valueChanges
+      .pipe(shareReplay(1)).pipe(pluck('data', 'gift'));
   }
 }

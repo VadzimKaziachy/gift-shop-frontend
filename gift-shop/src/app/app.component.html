@@ -1,2 +1,41 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<header>
+  <div class="header">
+    <h1>Gift Shop</h1>
+  </div>
+</header>
+<span></span>
+
 <router-outlet></router-outlet>
+
+<span></span>
+<footer>
+  <div class="footer">
+    <h6>
+      HALOVIETNAM LTD
+      66, Dang Van ngu, Dong Da
+      Hanoi, Vietnam
+    </h6>
+  </div>
+</footer>
+
+<div *ngIf='visibilityFrom' class="shopping__card">
+  <form class="form" [formGroup]="formCard" novalidate (ngSubmit)="submit()">
+    <a (click)="getShoppingCard()" class="shut__down">
+      <span></span>
+    </a>
+    <ul>
+      <li>
+        <label class="form__label">Name</label>
+        <input class="form__input" name='name' formControlName="userName" placeholder="Enter your name">
+      </li>
+      <li>
+        <label class="form__label">Card number</label>
+        <input class="form__input" name="number" formControlName="userCardNumber" placeholder="Enter your card number">
+      </li>
+      <li>
+        <button class="form__btn" [disabled]="formCard.invalid">Buy</button>
+      </li>
+    </ul>
+  </form>
+</div>
