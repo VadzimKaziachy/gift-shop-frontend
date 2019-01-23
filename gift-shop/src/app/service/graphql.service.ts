@@ -22,6 +22,7 @@ export class GraphqlService implements OnInit{
               id
               title
               shortDescription
+              iconUrl
             }
           } 
           `
@@ -39,7 +40,6 @@ export class GraphqlService implements OnInit{
             gift (id: $id) {
                 id
                 title
-                shortDescription
                 fullDescription
               }
           } 
