@@ -3,7 +3,7 @@
   <div class="gifts">
     <div class="gift" *ngFor="let gift of gifts | async">
       <a class="gift__image" [routerLink]="['gift', gift.id]">
-        <img src="../../assets/peach/512%20(2).png" alt="">
+        <img [src]="gift.iconUrl" alt="">
       </a>
       <div class="gift__info">
         <a class="gift__info__title" [routerLink]="['gift',gift.id]">{{gift.title}}</a>
